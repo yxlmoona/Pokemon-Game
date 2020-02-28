@@ -56,14 +56,14 @@ app.use(session({
 // app.use('/logs', logsControllers)
 // const sessionsControllers = require('./controllers/sessions_controllers.js')
 // app.use('/sessions', sessionsControllers)
-// const usersControllers = require('./controllers/users_controllers')
-// app.use('/users', usersControllers)
+const usersControllers = require('./controllers/users_controller.js')
+app.use('/users', usersControllers)
 //___________________
 // Routes
 //___________________
 //localhost:3000
 app.get('/' , (req, res) => {
-  res.send('Hello World!');
+  res.render('main.ejs')
 });
 //___________________
 //Listener
