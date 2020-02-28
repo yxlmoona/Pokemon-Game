@@ -4,8 +4,14 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
+const session = require ('express-session')
+require('dotenv').config()
+//___________________
+//Configuaration
+//___________________
 const app = express ();
 const db = mongoose.connection;
+
 //___________________
 //Port
 //___________________
@@ -17,7 +23,11 @@ const PORT = process.env.PORT || 3000;
 // How to connect to the database either via heroku or locally
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ohmycrud';
 // Connect to Mongo
-mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(MONGODB_URI ,  {
+  useNewUrlParser: false,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+ });
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
 db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
@@ -34,6 +44,20 @@ app.use(express.urlencoded({ extended: false }));// extended: false - does not a
 app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
+app.use(session({
+  secret:process.env.SECRET,
+  resave: false,
+  saveUninitialized: false
+}))
+//___________________
+// Controllers
+//___________________
+// const logsControllers = require('./controllers/logs_controllers.js')
+// app.use('/logs', logsControllers)
+// const sessionsControllers = require('./controllers/sessions_controllers.js')
+// app.use('/sessions', sessionsControllers)
+// const usersControllers = require('./controllers/users_controllers')
+// app.use('/users', usersControllers)
 //___________________
 // Routes
 //___________________
