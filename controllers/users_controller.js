@@ -9,7 +9,6 @@ users.get('/new', (req, res) => {
 
 })
 
-
 //*********presentational route end***********//
 //*********functional route***********//
 users.post('/', (req, res) => {

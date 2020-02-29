@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ohmycrud';
 // Connect to Mongo
 mongoose.connect(MONGODB_URI ,  {
-  useNewUrlParser: false,
+  useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
  });
@@ -54,8 +54,8 @@ app.use(session({
 //___________________
 // const logsControllers = require('./controllers/logs_controllers.js')
 // app.use('/logs', logsControllers)
-// const sessionsControllers = require('./controllers/sessions_controllers.js')
-// app.use('/sessions', sessionsControllers)
+const sessionsControllers = require('./controllers/sessions_controller.js')
+app.use('/sessions', sessionsControllers)
 const usersControllers = require('./controllers/users_controller.js')
 app.use('/users', usersControllers)
 //___________________
