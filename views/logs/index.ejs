@@ -6,28 +6,10 @@
   </head>
   <body>
     <h1>hello <%=user.username%></h1>
-
-    <!-- input log -->
-    <h2>Create Today's Log</h2>
-    <form class="" action="/logs" method="POST">
-      <label for="name">Date:</label>
-        <input type="Date" name="date" required /><br>
-      <input type="submit" name="submit" value="Select Date">
-    </form>
-    <!-- another form for adding task -->
-    <form class="" action="/logs?_method=PUT" method="post">
-      <label for="name">To-Do:</label>
-        <input type="text" name="task" required />
-      <label for="name">Complete:</label>
-        <input type="checkbox" name="complete"/><br>
-      <input type="submit" name="" value="Add"><br>
-    </form>
-    <ul>
-      <%for(let i = 0; i<logs.length; i++){%>
-        <li><%=logs[i].date%></li>
-        <li><%=logs[i].task%></li>
-      <%}%>
-
-    </ul>
+    <%for(let i = 0; i < user.logs.length; i++){%>
+      <a href='logs/<%=user.logs[i]._id%>'>
+      <h2><%=user.logs[i].date.slice(0, 10)%></h2>
+      </a>
+    <%}%>
   </body>
 </html>

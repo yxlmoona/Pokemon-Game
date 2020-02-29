@@ -10,7 +10,13 @@ const isAuthenticated = (req, res, next) => {
   }
 }
 //*********presentational route***********//
-//find all users when rendering new page
+//log index page
+logs.get('/', (req, res) => {
+  res.render('logs/index.ejs',{
+    user: req.session.currentUser
+  })
+})
+//New, find all users when rendering new page
 logs.get('/new',(req, res) => {
   User.find({},(err, allUsers) => {
     res.render('logs/new.ejs',{
@@ -20,15 +26,26 @@ logs.get('/new',(req, res) => {
   })
 
 })
+// Show, show all the logs under log in user
+logs.get('/:id',(req, res) => {
+  Log.findById(req.params.id, (err, foundLog) => {
+    res.render('logs/show.ejs',{
+      user: req.session.currentUser,
+      log: foundLog
+    })
+    // console.log(foundLog.date);
+  })
+})
 //*********presentational route end***********//
 //*********functional route***********//
+//post new log
 logs.post('/', (req, res) => {
   User.findById(req.body.userId, (err,foundUser) => {
     // console.log(req.session.currentUser);
     Log.create(req.body, (err, createdLog) => {
       foundUser.logs.push(createdLog)
       foundUser.save((err, data) => {
-        // console.log(foundUser);
+        console.log(foundUser.logs);
         res.redirect('logs/new')
       })
 
