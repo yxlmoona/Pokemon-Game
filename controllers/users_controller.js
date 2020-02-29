@@ -3,10 +3,19 @@ const express = require('express')
 const User = require('../models/users.js')
 const users = express. Router()
 //*********presentational route***********//
+//user index page
+
 //user new route: sign up new users
 users.get('/new', (req, res) => {
   res.render('users/new.ejs')
 
+})
+
+//user show page
+users.get('/show', (req, res) => {
+  res.render('users/show.ejs',{
+    user: req.session.currentUser
+  })
 })
 
 //*********presentational route end***********//
