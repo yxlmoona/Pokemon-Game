@@ -55,7 +55,7 @@ app.use(session({
 const sessionsControllers = require('./controllers/sessions_controller.js')
 app.use('/sessions', sessionsControllers)
 const logsControllers = require('./controllers/logs_controller.js')
-app.use('/', logsControllers)
+app.use('/logs', logsControllers)
 
 const usersControllers = require('./controllers/users_controller.js')
 app.use('/users', usersControllers)

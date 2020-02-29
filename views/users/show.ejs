@@ -6,10 +6,13 @@
     <title>Show User</title>
   </head>
   <body>
-    <h1><%=user.username%></h1>
+    <h1>Hello, <%=user.username%></h1>
     <!-- sign out  -->
     <form class="" action="/sessions?_method=DELETE" method="POST">
       <input type="submit" name="" value="Sign Out">
     </form>
+    <a href="/users/show/logs">
+    <button type="button" name="button">Check My Logs</button></a>
+    
   </body>
 </html>

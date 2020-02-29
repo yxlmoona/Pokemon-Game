@@ -1,1 +1,27 @@
-hello
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Welcome, <%=user.username%></h1>
+    <form action="/logs" method="post">
+      <select name="userId">
+        <option value='<%=user._id%>'>
+          <%=user.username%>
+        </option>
+        </select><br/>
+        <label for="name">Date:</label>
+          <input type="Date" name="date" required /><br>
+        <!-- <input type="submit" name="submit" value="Select Date"> -->
+        <label for="name">To-Do:</label>
+          <input type="text" name="task" required />
+        <label for="name">Complete:</label>
+          <input type="checkbox" name="complete"/><br>
+        <!-- <input type="submit" name="" value="Add"><br> -->
+        <input type="submit" value="Create Log"/>
+    </form>
+
+  </body>
+</html>
