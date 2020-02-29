@@ -12,8 +12,11 @@ const isAuthenticated = (req, res, next) => {
 //*********presentational route***********//
 //log index page
 logs.get('/', (req, res) => {
-  res.render('logs/index.ejs',{
-    user: req.session.currentUser
+  User.findById(req.session.currentUser._id, (err, foundUser) => {
+    res.render('logs/index.ejs',{
+      logs: foundUser.logs,
+      user: req.session.currentUser
+    })
   })
 })
 //New, find all users when rendering new page
@@ -27,13 +30,15 @@ logs.get('/new',(req, res) => {
 
 })
 // Show, show all the logs under log in user
-logs.get('/:id',(req, res) => {
+
+logs.get('/:id', (req, res) => {
   Log.findById(req.params.id, (err, foundLog) => {
-    res.render('logs/show.ejs',{
-      user: req.session.currentUser,
-      log: foundLog
+    User.findById(req.session.currentUser._id, (err, foundUser) => {
+      res.render('logs/show.ejs',{
+       log: foundLog,
+       user: foundUser
+      })
     })
-    // console.log(foundLog.date);
   })
 })
 //*********presentational route end***********//
@@ -56,17 +61,21 @@ logs.post('/', (req, res) => {
   } else {
     req.body.complete = false
   }
-
-
 })
-// logs.put('/logs', (req, res) => {
-//   Log.findOneAndUpdate(req.body, (err, createdLog) => {
-//
-//     res.redirect('/users/show')
-//     console.log(createdLog);
-//   })
+//delete
+logs.delete('/:id', (req, res) => {
+  Log.findByIdAndRemove(req.params.id, (err, foundLog) => {
+    User.findById(req.session.currentUser._id, (err, foundUser) => {
+      foundUser.logs.id(req.params.id).remove()
+      foundUser.save((err, data) => {
+        res.redirect('/logs')
+      })
 
-// })
+    })
+  })
+})
+
+
 
 
 //*********functional route end***********//

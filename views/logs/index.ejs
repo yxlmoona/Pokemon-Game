@@ -6,10 +6,13 @@
   </head>
   <body>
     <h1>hello <%=user.username%></h1>
-    <%for(let i = 0; i < user.logs.length; i++){%>
-      <a href='logs/<%=user.logs[i]._id%>'>
-      <h2><%=user.logs[i].date.slice(0, 10)%></h2>
+    <%for(let i = 0; i < logs.length; i++){%>
+      <a href='logs/<%=logs[i]._id%>'>
+      <h2><%=String(logs[i].date).slice(0,10)%></h2>
       </a>
+      <form class="" action="logs/<%=logs[i]._id%>?_method=DELETE" method="post">
+        <input type="submit" name="" value="Delete">
+      </form>
     <%}%>
   </body>
 </html>
