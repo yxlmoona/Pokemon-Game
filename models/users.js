@@ -20,7 +20,7 @@ const userSchema = new Schema({
   },
   password: String,
   logs: [Log.schema]
-  // logs: [{ type: Schema.Types.ObjectId, ref: 'Log' }]
+  
 })
 
 // const Log = mongoose.model('Log', logSchema)

@@ -8,7 +8,7 @@
     <h1>hello <%=user.username%></h1>
     <%for(let i = 0; i < logs.length; i++){%>
       <a href='logs/<%=logs[i]._id%>'>
-      <h2><%=String(logs[i].date).slice(0,10)%></h2>
+      <h2><%=logs[i].name%></h2>
       </a>
       <form class="" action="logs/<%=logs[i]._id%>?_method=DELETE" method="post">
         <input type="submit" name="" value="Delete">

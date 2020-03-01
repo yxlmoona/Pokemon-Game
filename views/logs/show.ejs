@@ -6,10 +6,13 @@
   </head>
   <body>
     <h1>hello <%=user.username%></h1>
-    <h2><%=String(log.date).slice(0, 15)%></h2>
-    <%for(let i = 0; i < log.task.length; i++){%>
-      <h2>To-do: <%=log.task[i]%> </h2>
-   <%}%>
+    <h2><%=log.name%></h2>
+    <h2><%=log.ingrediates%></h2>
+    <h2><%=log.procedure%></h2>
+
     <a href="/logs/<%=log.id%>/edit"><button type="button" name="button">Edit Log</button></a>
+    <a href="/logs">
+    <button type="button" name="button">Main Page</button>
+    </a>
   </body>
 </html>

@@ -6,22 +6,22 @@
   </head>
   <body>
     <h1>Welcome, <%=user.username%>!</h1>
-    <h2>Create Today's Jornal</h2>
+    <h2>Create a New Recipe</h2>
     <form action="/logs" method="post">
       <select name="userId">
         <option value='<%=user._id%>'>
           <%=user.username%>
         </option>
         </select><br/>
-        <label for="name">Date:</label>
-          <input type="Date" name="date" required /><br>
-        <label for="name">To-Do:</label>
-          <input type="text" name="task"/>
-        <label for="name">Complete:</label>
-          <input type="checkbox" name="complete"/><br>
+        <label for="name">Name:</label>
+          <input id="name" type="text" name="name" required /><br>
+        <label for="ingrediates">Ingrediates:</label>
+          <input id="ingrediates" type="text" name="ingrediates"/>
+        <label for="procedure">Procedure: </label>
+          <input type="textbox" name="procedure"/><br>
           <!-- <input type="submit" name="" value="Add"><br> -->
         <a href="/logs">
-          <input type="submit" value="Start Today's Log"/>
+          <input type="submit" value="submit"/>
         </a>
     </form>
 <!--
@@ -34,6 +34,6 @@
         <input type="checkbox" name="complete"/><br>
         <input type="submit" name="" value="Add"><br>
     </form> -->
-    <a href="/logs"><button type="button" name="button">Check Previous Log</button></a>
+    <a href="/logs"><button type="button" name="button">Main Page</button></a>
   </body>
 </html>
