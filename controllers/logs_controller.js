@@ -33,12 +33,23 @@ logs.get('/new',(req, res) => {
 
 logs.get('/:id', (req, res) => {
   Log.findById(req.params.id, (err, foundLog) => {
-    User.findById(req.session.currentUser._id, (err, foundUser) => {
+    User.findById(req.session.currentUser.id, (err, foundUser) => {
       res.render('logs/show.ejs',{
        log: foundLog,
-       user: foundUser
+       user: req.session.currentUser
       })
     })
+  })
+})
+//edit
+logs.get('/:id/edit', (req, res) => {
+  Log.findById(req.params.id, (err, foundLog) => {
+    res.render('logs/edit.ejs',{
+      log: foundLog,
+      user: req.session.currentUser
+    })
+    // console.log(foundLog);
+    // console.log(foundLog.task[0]);
   })
 })
 //*********presentational route end***********//
@@ -75,6 +86,18 @@ logs.delete('/:id', (req, res) => {
   })
 })
 
+logs.put('/:id', (req, res) => {
+
+  Log.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedLog)=>{
+        User.findOne({ 'logs._id' : req.params.id }, (err, foundUser)=>{
+            foundUser.logs.id(req.params.id).remove();
+            foundUser.logs.push(updatedLog);
+            foundUser.save((err, data)=>{
+                res.redirect('/logs/'+req.params.id);
+            });
+        });
+    });
+})
 
 
 

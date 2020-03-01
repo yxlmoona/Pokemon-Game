@@ -7,7 +7,8 @@ const logSchema = new Schema({
   },
   task:[{
     type: String,
-    complete: {type: Boolean}
+
+    // complete: {type: Boolean}
   }],
 
   user: { type: Schema.Types.ObjectId, ref: 'User' },
