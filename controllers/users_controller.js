@@ -14,7 +14,7 @@ users.get('/new', (req, res) => {
 
 //*********presentational route end***********//
 //*********functional route***********//
-users.post('/sessions', (req, res) => {
+users.post('/', (req, res) => {
   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
   User.create(req.body, (err, createdUser) => {
     console.log('new created user is ', createdUser);

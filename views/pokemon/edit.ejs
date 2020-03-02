@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>edit pokemon</title>
   </head>
-  <body onload='document.form.submit()'>
+  <!-- onload='document.form.submit()' -->
+  <body >
     <form class="" action="/logs" method="post" name='form'>
       <select name="userId">
         <option value='<%=user._id%>'>
@@ -22,6 +23,11 @@
       <input type="text" name="hp" value = <%=pokemonShow.stats.hp%> id="stats">
       <input type="text" name="attack" value= <%=pokemonShow.stats.attack%> id="stats">
       <input type="text" name="defense" value= <%=pokemonShow.stats.defense%> id="stats">
+
+      <label for="money">Coin Left</label>
+      <input type="number" name="money" value = <%=user.money%> id="type">
+
+
       <input type="submit" name="" value="get pokemon">
     </form>
 

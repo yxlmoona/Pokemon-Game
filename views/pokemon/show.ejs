@@ -18,10 +18,22 @@
       <li>ATTACK:<%=pokemonShow.stats.attack%></li>
       <li>DEFENSE:<%=pokemonShow.stats.defense%></li>
     </ul>
+    <p>Coins Needed:
+      <%let coin = Math.floor(Math.random()* 1000) %>
+      <%= coin %>
+      <%= user.money = user.money - coin %>
+    </p>
     <a href="/pokemon"><button type="button" name="button">return to main page</button></a>
 
     <a href="/pokemon/<%=id%>/edit">
     <button type="button" name="button">get</button>
     </a>
+    <!-- <script type="text/javascript">
+      document.getElementsByTagName("button").on('click',()=>{
+        user.money = user.money - coin
+      });
+    </script> -->
+
   </body>
+
 </html>
