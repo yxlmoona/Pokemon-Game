@@ -14,7 +14,8 @@ pokemon.get('/', (req, res) => {
   User.findById(req.session.currentUser._id, (err, foundUser) => {
     res.render('pokemon/index.ejs',{
       pokemonIndex: Pokemon,
-      user: req.session.currentUser
+      user: req.session.currentUser,
+      money: foundUser.money
     })
   })
 })
@@ -32,7 +33,8 @@ pokemon.get('/:id',(req, res) => {
   res.render('pokemon/show.ejs',{
     pokemonShow: Pokemon[req.params.id],
     id: req.params.id,
-    user: req.session.currentUser
+    user: req.session.currentUser,
+    money: foundUser.money
   })
   })
 })

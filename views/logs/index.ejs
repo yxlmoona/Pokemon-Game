@@ -14,7 +14,6 @@
       <%- include('../partials/nav.ejs') %>
       <%for(let i = 0; i < logs.length; i++){%>
       <p>name : <%=logs[i].name%></p>
-  
       <a href="/logs/<%=logs[i]._id%>"><img src="<%=logs[i].img%>" alt=""></a>
       <form class="" action="/logs/<%=logs[i]._id%>?_method=DELETE" method="post">
         <input type="submit" name="" value="Delete">
