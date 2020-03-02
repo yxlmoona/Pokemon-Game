@@ -27,5 +27,7 @@ users.post('/', (req, res) => {
     res.redirect('/')
   })
 })
+
+
 //*********functional route end***********//
 module.exports = users
