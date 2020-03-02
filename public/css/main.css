@@ -1,0 +1,61 @@
+*{
+
+  margin: 0;
+  box-sizing: border-box;
+}
+h1{
+  color: DarkRed;
+
+}
+
+header{
+
+  font-family: sans-serif;
+  margin: 30px auto;
+  text-align: center;
+}
+.flex-container{
+  /* border: 0.1em solid red; */
+  background-color: silver;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 50px;
+
+}
+.row{
+  color: white;
+  background-color: DarkRed;
+  text-align:center;
+  /* border: 0.1em solid red; */
+  padding: 20px 0;
+  margin: 20px auto;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+a{
+  text-align: center;
+  display:inline-block;
+
+}
+form{
+
+  /* border: 0.1em solid red; */
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+img{
+  margin: 10px auto;
+  width: 40%;
+  height: 100%;
+
+}
+input, button{
+
+  font-family: sans-serif;
+  background-color: DarkCyan;
+}

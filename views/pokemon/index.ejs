@@ -11,18 +11,17 @@
   <body>
     <header>
       <h1>pokemon index</h1>
-      <%for(let i = 0; i < logs.length; i++){%>
-      <p><%=logs[i].name%></p>
-      <a href="/logs/<%=logs[i]._id%>"><img src="<%=logs[i].img%>" alt=""></a>
-      <form class="" action="/logs/<%=logs[i]._id%>?_method=DELETE" method="post">
-        <input type="submit" name="" value="Delete">
-      </form>
-      <a href="logs/<%=logs[i]._id%>/edit">
-        <input type="submit" name="" value="Upgrade">
-      </a>
+      <a href="/logs">
+      <button type="button" name="button">Check My Pokemon</button></a>
+    </header>
+    <div class="flex-container">
+    <%for(let i = 0; i < pokemonIndex.length; i++){%>
+      <div class="row">
+        <p><%=pokemonIndex[i].name%></p>
+        <a href="/pokemon/<%=i%>"><img src="<%=pokemonIndex[i].img%>" alt=""></a>
 
-
-
-      <%}%>
+        </div>
+    <%}%>
+    </div>
   </body>
 </html>

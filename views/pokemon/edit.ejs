@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>edit pokemon</title>
+  </head>
+  <body>
+    <form class="" action="/logs" method="post">
+      <select name="userId">
+        <option value='<%=user._id%>'>
+          <%=user.username%>
+        </option>
+        </select><br/>
+      <label for="name">name</label>
+      <input type="text" name="name" value = <%=pokemonShow.name%> id="name">
+      <label for="img">name</label>
+      <input type="text" name="img" value = <%=pokemonShow.img%> id="name">
+      <label for="type">type</label>
+      <input type="text" name="type" value = <%=pokemonShow.type[0]%> id="type">
+      <input type="text" name="type" value = <%=pokemonShow.type[1]%> id="type">
+      <label for="stats">stats</label>
+      <input type="text" name="hp" value = <%=pokemonShow.stats.hp%> id="stats">
+      <input type="text" name="attack" value= <%=pokemonShow.stats.attack%> id="stats">
+      <input type="text" name="defense" value= <%=pokemonShow.stats.defense%> id="stats">
+      <input type="submit" name="" value="get pokemon">
+    </form>
+  </body>
+</html>

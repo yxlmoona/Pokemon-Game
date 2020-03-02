@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>show pokemon</title>
+  </head>
+  <body>
+    <h4>NAME:<%=pokemonShow.name%></h4>
+    <img src="<%=pokemonShow.img%>"></img>
+    <ul>TYPE
+      <%for(let i = 0; i < pokemonShow.type.length; i++){%>
+      <li><%=pokemonShow.type[i]%></li>
+      <%}%>
+    </ul>
+    <ul>
+      <li>HP:<%=pokemonShow.stats.hp%></li>
+      <li>ATTACK:<%=pokemonShow.stats.attack%></li>
+      <li>DEFENSE:<%=pokemonShow.stats.defense%></li>
+    </ul>
+    <a href="/pokemon"><button type="button" name="button">return to main page</button></a>
+    
+    <a href="/pokemon/<%=id%>/edit">
+    <button type="button" name="button">get</button>
+    </a>
+  </body>
+</html>

@@ -5,6 +5,7 @@ const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const session = require ('express-session')
+
 require('dotenv').config()
 //___________________
 //Configuaration
@@ -52,6 +53,8 @@ app.use(session({
 //___________________
 // Controllers
 //___________________
+const pokeControllers = require('./controllers/poke_controller.js')
+app.use('/pokemon', pokeControllers)
 const sessionsControllers = require('./controllers/sessions_controller.js')
 app.use('/sessions', sessionsControllers)
 const logsControllers = require('./controllers/logs_controller.js')
