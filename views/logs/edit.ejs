@@ -10,7 +10,7 @@
         <%=user.username%>
       </option>
     </select><br/>
-    <form action="/logs/<%=user._id%>?_method=PUT" method="post">
+    <form action="/logs/<%=log.id%>/edit?_method=PUT" method="post">
       <label for="name">name</label>
       <input type="text" name="name" value = <%=log.name%> id="name">
       <label for="img">name</label>

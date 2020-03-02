@@ -89,27 +89,27 @@ logs.delete('/:id', (req, res) => {
   })
 })
 
-// logs.put('/:id', (req, res) => {
-//   const object = {...req.body}
-//   console.log(object);
-//   object.stats = {
-//     hp: req.body.hp,
-//     attack: req.body.attack,
-//     defense: req.body.defense
-//   }
-//   Log.findByIdAndUpdate(req.params.id, object, { new: true }, (err, updatedLog)=>{
-//         User.findById(req.session.currentUser._id, (err, foundUser)=>{
-//             console.log(updatedLog);
-//             console.log(foundUser);
-//             // foundUser.logs.id(req.params.id).remove();
-//             foundUser.logs.push(updatedLog)
-//             console.log(foundUser.logs);
-//             foundUser.save((err, data)=>{
-//                 res.redirect('/logs');
-//             });
-//         });
-//     });
-// })
+logs.put('/:id/edit', (req, res) => {
+  const object = {...req.body}
+  console.log(object)
+  object.stats = {
+    hp: req.body.hp,
+    attack: req.body.attack,
+    defense: req.body.defense
+  }
+  Log.findByIdAndUpdate(req.params.id, object, { new: true }, (err, updatedLog)=>{
+        User.findById(req.session.currentUser._id, (err, foundUser)=>{
+            console.log(updatedLog);
+            // console.log(foundUser);
+            foundUser.logs.id(req.params.id).remove();
+            foundUser.logs.push(updatedLog)
+            console.log(foundUser.logs);
+            foundUser.save((err, data)=>{
+                res.redirect('/logs');
+            });
+        });
+    });
+})
 
 
 
