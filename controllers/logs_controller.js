@@ -12,7 +12,7 @@ const isAuthenticated = (req, res, next) => {
 }
 //*********presentational route***********//
 //log index page
-logs.get('/', (req, res) => {
+logs.get('/', isAuthenticated, (req, res) => {
   User.findById(req.session.currentUser._id, (err, foundUser) => {
     res.render('logs/index.ejs',{
       logs: foundUser.logs,
@@ -20,8 +20,8 @@ logs.get('/', (req, res) => {
     })
   })
 })
-//New, find all users when rendering new page
-logs.get('/new',(req, res) => {
+//New
+logs.get('/new',isAuthenticated,(req, res) => {
   User.find({},(err, allUsers) => {
     res.render('logs/new.ejs',{
       users: allUsers,
@@ -30,9 +30,9 @@ logs.get('/new',(req, res) => {
   })
 
 })
-// Show, show all the logs under log in user
+// Show
 
-logs.get('/:id', (req, res) => {
+logs.get('/:id', isAuthenticated,(req, res) => {
   Log.findById(req.params.id, (err, foundLog) => {
     User.findById(req.session.currentUser.id, (err, foundUser) => {
       res.render('logs/show.ejs',{
@@ -43,7 +43,7 @@ logs.get('/:id', (req, res) => {
   })
 })
 //edit
-logs.get('/:id/edit', (req, res) => {
+logs.get('/:id/edit',isAuthenticated, (req, res) => {
   Log.findById(req.params.id, (err, foundLog) => {
     res.render('logs/edit.ejs',{
       log: foundLog,
@@ -56,7 +56,7 @@ logs.get('/:id/edit', (req, res) => {
 //*********presentational route end***********//
 //*********functional route***********//
 //post new log
-logs.post('/', (req, res) => {
+logs.post('/', isAuthenticated,(req, res) => {
   const object = {...req.body}
   console.log(object);
   object.stats = {
@@ -77,7 +77,7 @@ logs.post('/', (req, res) => {
   })
 })
 //delete
-logs.delete('/:id', (req, res) => {
+logs.delete('/:id', isAuthenticated,(req, res) => {
   Log.findByIdAndRemove(req.params.id, (err, foundLog) => {
     User.findById(req.session.currentUser._id, (err, foundUser) => {
       foundUser.logs.id(req.params.id).remove()
@@ -89,7 +89,7 @@ logs.delete('/:id', (req, res) => {
   })
 })
 
-logs.put('/:id/edit', (req, res) => {
+logs.put('/:id/edit', isAuthenticated,(req, res) => {
   const object = {...req.body}
   console.log(object)
   object.stats = {

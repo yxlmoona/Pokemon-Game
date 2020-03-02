@@ -11,16 +11,10 @@ users.get('/new', (req, res) => {
 
 })
 
-//user show page
-users.get('/show', (req, res) => {
-  res.render('users/show.ejs',{
-    user: req.session.currentUser
-  })
-})
 
 //*********presentational route end***********//
 //*********functional route***********//
-users.post('/', (req, res) => {
+users.post('/sessions', (req, res) => {
   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
   User.create(req.body, (err, createdUser) => {
     console.log('new created user is ', createdUser);

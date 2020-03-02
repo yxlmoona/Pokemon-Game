@@ -9,6 +9,7 @@ const userSchema = new Schema({
     required: true
   },
   password: String,
+  money: Number,
   logs: [Log.schema]
 
 })

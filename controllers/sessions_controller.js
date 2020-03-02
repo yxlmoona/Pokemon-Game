@@ -34,7 +34,7 @@ sessions.delete('/',(req, res) => {
   req.session.destroy(() => {
     res.redirect('/')
   })
-  // console.log(req.session.currentUser);
+
 })
 //*********functional route end***********//
 module.exports = sessions

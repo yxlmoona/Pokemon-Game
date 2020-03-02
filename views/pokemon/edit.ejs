@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>edit pokemon</title>
   </head>
-  <body>
-    <form class="" action="/logs" method="post">
+  <body onload='document.form.submit()'>
+    <form class="" action="/logs" method="post" name='form'>
       <select name="userId">
         <option value='<%=user._id%>'>
           <%=user.username%>
@@ -24,5 +24,8 @@
       <input type="text" name="defense" value= <%=pokemonShow.stats.defense%> id="stats">
       <input type="submit" name="" value="get pokemon">
     </form>
+
+
+
   </body>
 </html>

@@ -5,6 +5,7 @@
     <title>show pokemon</title>
   </head>
   <body>
+    <%- include('../partials/nav.ejs') %>
     <h4>NAME:<%=pokemonShow.name%></h4>
     <img src="<%=pokemonShow.img%>"></img>
     <ul>TYPE
@@ -18,7 +19,7 @@
       <li>DEFENSE:<%=pokemonShow.stats.defense%></li>
     </ul>
     <a href="/pokemon"><button type="button" name="button">return to main page</button></a>
-    
+
     <a href="/pokemon/<%=id%>/edit">
     <button type="button" name="button">get</button>
     </a>

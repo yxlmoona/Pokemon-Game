@@ -5,6 +5,8 @@
     <title>upgrade pokemon</title>
   </head>
   <body>
+    <%- include('../partials/nav.ejs') %>
+    <h3>You will need $xx to upgrade this pokemon</h3>
     <select name="userId">
       <option value='<%=user._id%>'>
         <%=user.username%>

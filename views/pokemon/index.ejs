@@ -13,6 +13,7 @@
       <h1>pokemon index</h1>
       <a href="/logs">
       <button type="button" name="button">Check My Pokemon</button></a>
+      <%- include('../partials/nav.ejs') %>
     </header>
     <div class="flex-container">
     <%for(let i = 0; i < pokemonIndex.length; i++){%>
@@ -23,5 +24,6 @@
         </div>
     <%}%>
     </div>
+
   </body>
 </html>
