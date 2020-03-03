@@ -1,0 +1,86 @@
+*{
+  border: 0px;
+  margin: 0px;
+  /* border: 0.1em solid red; */
+  box-sizing: border-box;
+  padding: 0px;
+}
+.bg-img{
+  margin-top: 30px;
+  margin-left: 25%;
+  background-image: url('https://gamespot1.cbsistatic.com/uploads/scale_landscape/1578/15787979/3613708-4820135992-holid.jpg');
+  background-position: center;
+
+  background-size: cover;
+  background-repeat: space;
+  height: 250px;
+  /* filter: blur(8px); */
+  width: 50%;
+  box-shadow: 5px 10px 18px #888888;
+}
+.container-form{
+  width: 50%;
+  margin:auto;
+  padding: 30px 10px;
+  background-color: rgba(255, 255, 255);
+  z-index: 2;
+  cursor: pointer;
+  box-shadow: 5px 10px 18px #888888;
+}
+.container-input{
+  display: flex;
+  margin: 20px 40px;
+  height: 40px;
+  border: 0.08em solid silver;
+}
+h1{
+  font-family: 'Trade Winds';
+  color: FireBrick;
+  text-align: center;
+}
+body{
+  background-image: radial-gradient(rgb(245, 245, 220),rgb(0, 139, 139));
+  background-color:
+  rgb(0, 139, 139);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 750px;
+}
+
+.icon {
+  padding: 10px;
+  background: rgb(0, 139, 139);
+  color: white;
+  min-width: 50px;
+  text-align: center;
+
+
+}
+input{
+  /* border: 0.1em solid black; */
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  font-family:'Trade Winds' ;
+  font-size:15px;
+  
+}
+.submit {
+
+  margin: 40px;
+}
+.submit input{
+  background-color: rgb(0, 139, 139);
+  color: white;
+  padding: 15px 20px;
+  font-size: 20px;
+  box-shadow: 5px 10px 18px #888888;
+}
+.submit input:hover{
+  background-color: rgb(165, 42, 42);
+
+}
+.container-input input:focus{
+  background-color: rgb(255, 235, 205);
+
+}
