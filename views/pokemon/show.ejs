@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>show pokemon</title>
-  </head>
+<%- include('../partials/head.ejs')%>
   <body>
-    <%- include('../partials/nav.ejs') %>
-    <h4>NAME:<%=pokemonShow.name%></h4>
-    <img src="<%=pokemonShow.img%>"></img>
-    <ul>TYPE
-      <%for(let i = 0; i < pokemonShow.type.length; i++){%>
-      <li><%=pokemonShow.type[i]%></li>
-      <%}%>
-    </ul>
-    <ul>
-      <li>HP:<%=pokemonShow.stats.hp%></li>
-      <li>ATTACK:<%=pokemonShow.stats.attack%></li>
-      <li>DEFENSE:<%=pokemonShow.stats.defense%></li>
-    </ul>
-    <p>Coins Needed:
-      <%let coin = Math.floor(Math.random()* 1000) %>
-      <%= coin %>
-      Coin left: <%= money = money - coin %>
-    </p>
-    <a href="/pokemon"><button type="button" name="button">return to main page</button></a>
+    <header>
+      <div class="head-bar">
+        <h1>POKEMON SHOP</h1>
 
-    <a href="/pokemon/<%=id%>/edit">
-    <button type="button" name="button">get</button>
-    </a>
-    <!-- <script type="text/javascript">
-      document.getElementsByTagName("button").on('click',()=>{
-        user.money = user.money - coin
-      });
-    </script> -->
+        <%- include('../partials/nav.ejs') %>
+       <!-- partials finish  -->
+      </div>
+    </header>
+    <div class="container-display">
+      <div class="display-img">
+        <img src="<%=pokemonShow.img%>"></img>
+        <h2>Coins Needed:
+          <%let coin = Math.floor(Math.random()* 1000) %>
+          <%= coin %>
+        </h2>
+      </div>
+      <div class="display-info">
+        <h4 id="name"><%=pokemonShow.name%></h4>
+        <h4>Type:</h4>
+          <%for(let i = 0; i < pokemonShow.type.length; i++){%>
+          <p>-<%=pokemonShow.type[i]%></p>
+          <%}%>
+        <h4>Stats:</h4>
+          <p>-HP:<%=pokemonShow.stats.hp%></p>
+          <p>-Attack:<%=pokemonShow.stats.attack%></p>
+          <p>-Defense:<%=pokemonShow.stats.defense%></p>
 
+
+      </div>
+    </div>
+    <div class="footer">
+      <a href="/pokemon"><button type="button" name="button">return to main page</button></a>
+
+      <a href="/pokemon/<%=id%>/edit">
+      <button type="button" name="button">get</button>
+      </a>
+    </div>
   </body>
 
 </html>
