@@ -6,15 +6,10 @@
   </head>
   <body>
     <%- include('../partials/nav.ejs') %>
+    <img src="<%=log.img%>" alt="">
     <h3>You will need <%=upgradeCoin=Math.floor(Math.random()* 500)%> coins to upgrade this pokemon</h3>
-    <img src="https://pm1.narvii.com/5823/2c74cc6cd8b7e1257fa996119585a18242ac6038_hq.jpg" alt="">
-    <img src="https://pm1.narvii.com/5823/793532ba945734f653547f8bf3fc53e814efa74b_hq.jpg" alt="">
-    <img src="https://pm1.narvii.com/5823/180a783e49b839ee7cf369b888e83012ebe9d083_hq.jpg" alt="">
-    <img src="https://pm1.narvii.com/5823/46fd458deb27b44926b6e50e8826e3d5d75501e3_hq.jpg" alt="">
-    <img src="https://pm1.narvii.com/6082/021c78186ab88f625ac32b22f65deb4604c31a22_hq.jpg" alt="">
-    <img src="https://pm1.narvii.com/6082/09324fe91d6c80b8de09d7a906d58a10a0764d62_hq.jpg" alt="">
-    <img src="https://pm1.narvii.com/6082/ce11b6775f1c72e5cfbe673ec2160b300a91a19f_hq.jpg" alt="">
-    <img src="https://pm1.narvii.com/6082/56102d45460d413c6bb95f85bca2d41fe695b04c_hq.jpg" alt="">
+
+
     <select name="userId">
       <option value='<%=user._id%>'>
         <%=user.username%>
@@ -22,20 +17,23 @@
     </select><br/>
     <form action="/logs/<%=log.id%>/edit?_method=PUT" method="post">
       <label for="name">name</label>
-      <input type="text" name="name" value = <%=log.name%> id="name">
+
+      <input type="text" name="name" value = '<%=log.name%>'  id="name">
       <label for="img">name</label>
       <input type="text" name="img" value = <%=log.img%> id="name">
       <label for="type">type</label>
       <input type="text" name="type" value = <%=log.type[0]%> id="type">
       <input type="text" name="type" value = <%=log.type[1]%> id="type">
-      <label for="stats">stats</label>
-      <input type="text" name="hp" value = <%=log.stats.hp%> id="stats">
-      <input type="text" name="attack" value= <%=log.stats.attack%> id="stats">
-      <input type="text" name="defense" value= <%=log.stats.defense%> id="stats">
-
+      <label for="HP">HP</label>
+      <input type="text" name="hp" value = <%=log.stats.hp+10%> id="HP" readonly>
+      <label for="attack">attack</label>
+      <input type="text" name="attack" value= <%=log.stats.attack+10%> id="attack" readonly>
+      <label for="defense">defense</label>
+      <input type="text" name="defense" value= <%=log.stats.defense+10%> id="defense" readonly>
       <label for="money">Coin Left After upgrade</label>
-      <input type="number" name="money" value = <%=money - upgradeCoin%> id="name">
+      <input type="number" name="money" value = <%=money - upgradeCoin%> id="name" readonly>
       <input type="submit" name="" value="upgrade pokemon">
     </form>
+
   </body>
 </html>

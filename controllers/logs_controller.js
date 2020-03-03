@@ -20,8 +20,8 @@ logs.get('/', isAuthenticated, (req, res) => {
       user: req.session.currentUser
 
     })
-    console.log("Money" + foundUser.money);
-    console.log(foundUser.logs);
+    // console.log("Money" + foundUser.money);
+    // console.log(foundUser.logs);
   })
 })
 //New
