@@ -1,21 +1,26 @@
 <ul class="right">
   <% if (user) { %>
   <li>Welcome <%=user.username%></li>
-  <li>You have <%=money%> coins left</li>
-  <li>
-    <form action="/sessions?_method=DELETE" method="POST">
-      <input type="submit" value="Log Out" class="btn-small red" />
-    </form>
-  </li>
-  <li>
-  <a href="/logs">
-  <button type="button" name="button">Check My Pokemon</button></a>
-  </li>
-  <li>
-    <a href="/users/show">
-      <button type="button" name="button">Buy More Coins</button>
-    </a>
-  </li>
+  <li> Coins: <%=money%></li>
+  <div class="dropdown">
+    <span>More</span>
+    <div class="dropdown-content">
+      <li>
+      <a href="/logs">
+      My Pokemon</a>
+      </li>
+      <li>
+        <a href="/users/show">
+          Buy Coins
+        </a>
+      </li>
+      <li>
+        <form action="/sessions?_method=DELETE" method="POST">
+          <input type="submit" value="Log Out" class="btn-small red" />
+        </form>
+      </li>
+    </div>
+  </div>
   <% } else { %>
   <li><a href="/users/new">Sign Up</a></li>
   <li><a href="/sessions/new">Log In</a></li>

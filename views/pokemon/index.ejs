@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>index page</title>
-    <link rel="stylesheet" href="css/main.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-    <!-- <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="skeleton.css"> -->
-  </head>
+<%- include('../partials/head.ejs')%>
   <body>
     <header>
-      <h1>pokemon index</h1>
-      <a href="/logs">
-      <button type="button" name="button">Check My Pokemon</button></a>
+      <div class="head-bar">
+        <h1>POKEMON SHOP</h1>
 
-      <%- include('../partials/nav.ejs') %>
+        <%- include('../partials/nav.ejs') %>
+
+       <!-- partials finish  -->
+      </div>
+
     </header>
     <div class="flex-container">
     <%for(let i = 0; i < pokemonIndex.length; i++){%>
