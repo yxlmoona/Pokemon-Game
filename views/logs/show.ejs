@@ -2,19 +2,33 @@
 <html lang="en" dir="ltr">
   <%- include('../partials/head.ejs')%>
   <body>
-    <%- include('../partials/nav.ejs') %>
+    <header>
+      <div class="head-bar">
+        <h1><%=log.name%></h1>
+        <%- include('../partials/nav.ejs') %>
+      </div>
+    </header>
+    <div class="container-display">
+      <div class="display-img">
+        <img src="<%=log.img%>" alt="">
+      </div>
+      <div class="display-info">
+        <h4><%=log.name%></h4>
+        <h4>Type:</h4>
+        <p><%=log.type%></p>
+        <h4>Stats:</h4>
+        <p>HP:<%=log.stats.hp%></p>
+        <p>ATTACK:<%=log.stats.attack%></p>
+        <p>DEFENSE:<%=log.stats.defense%></p>
+      </div>
+    </div>
+    <div class="footer">
+      <a href="/logs/<%=log.id%>/edit"><button type="button" name="button">Upgrade</button></a>
+      <a href="/logs">
+      <button type="button" name="button">My Pokedex</button>
+      </a>
+    </div>
 
-    <h2><%=log.name%></h2>
-    <h2><%=log.type%></h2>
-    <img src="<%=log.img%>" alt="">
-    <ul>
-      <li>HP:<%=log.stats.hp%></li>
-      <li>ATTACK:<%=log.stats.attack%></li>
-      <li>DEFENSE:<%=log.stats.defense%></li>
-    </ul>
-    <a href="/logs/<%=log.id%>/edit"><button type="button" name="button">Upgrade</button></a>
-    <a href="/logs">
-    <button type="button" name="button">My Pokedex</button>
-    </a>
+
   </body>
 </html>

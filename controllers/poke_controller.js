@@ -21,10 +21,13 @@ pokemon.get('/', (req, res) => {
 })
 //edit
 pokemon.get('/:id/edit',(req, res) => {
-  res.render('pokemon/edit.ejs',{
-    index: req.params.id,
-    pokemonShow: Pokemon[req.params.id],
-    user: req.session.currentUser
+  User.findById(req.session.currentUser._id, (err, foundUser) => {
+    res.render('pokemon/edit.ejs',{
+      index: req.params.id,
+      pokemonShow: Pokemon[req.params.id],
+      user: req.session.currentUser,
+      money: foundUser.money
+    })
   })
 })
 //show Page

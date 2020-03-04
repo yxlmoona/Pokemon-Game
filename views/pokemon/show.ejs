@@ -4,7 +4,7 @@
   <body>
     <header>
       <div class="head-bar">
-        <h1>POKEMON SHOP</h1>
+        <h1><%=pokemonShow.name%></h1>
 
         <%- include('../partials/nav.ejs') %>
        <!-- partials finish  -->
@@ -33,11 +33,12 @@
       </div>
     </div>
     <div class="footer">
-      <a href="/pokemon"><button type="button" name="button">return to main page</button></a>
-
       <a href="/pokemon/<%=id%>/edit">
       <button type="button" name="button">get</button>
-      </a>
+     </a></br>
+      <a href="/pokemon"><button type="button" name="button">Return To Shop</button></a>
+
+
     </div>
   </body>
 

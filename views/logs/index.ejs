@@ -3,26 +3,37 @@
   <%- include('../partials/head.ejs')%>
   <body>
     <header>
-      <h1>pokemon index</h1>
-      <%- include('../partials/nav.ejs') %>
+      <div class="head-bar">
+        <h1>MY POKEMON</h1>
+        <%- include('../partials/nav.ejs') %>
+
+      </div>
+    </header>
+    <div class="flex-container">
+
       <%for(let i = 0; i < logs.length; i++){%>
-      <p>name : <%=logs[i].name%></p>
-      <a href="/logs/<%=logs[i]._id%>"><img src="<%=logs[i].img%>" alt=""></a>
-      <form class="" action="/logs/<%=logs[i]._id%>?_method=DELETE" method="post">
-        <input type="submit" name="" value="Delete">
-      </form>
-      <a href="logs/<%=logs[i]._id%>/edit">
-        <button type="button" name="button">Upgrade</button>
-      </a>
+      <div class="row">
+        <p><%=logs[i].name%></p>
+        <p>Coins: <%=money%></p>
+        <a href="/logs/<%=logs[i]._id%>"><img class="log-img" src="<%=logs[i].img%>" alt=""></a>
+        <form class="" action="/logs/<%=logs[i]._id%>?_method=DELETE" method="post">
+          <input type="submit" name="" value="Delete">
+        </form>
+        <a href="logs/<%=logs[i]._id%>/edit">
+          <button type="button" name="button">Upgrade</button>
+        </a>
+        <form class="" action="/users?_method=PUT" method="post">
+          <input type="submit" name="" value="Go Fight">
+        </form>
+      </div>
 
-      <form class="" action="/users?_method=PUT" method="post">
-        <input type="submit" name="" value="Go Fight">
-      </form>
       <%}%>
-
+    </div>
+    <div class="footer">
       <a href="/pokemon">
       <button type="button" name="button">To Shop</button>
       </a>
+    </div>
 
   </body>
 </html>
