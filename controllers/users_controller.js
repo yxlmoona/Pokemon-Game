@@ -58,9 +58,25 @@ users.put('/', (req, res) => {
 
   })
 })
-users.put('/show', (req, res) => {
+users.put('/show/100', (req, res) => {
+  User.findById(req.session.currentUser._id, (err, foundUser) => {
+   foundUser.money = foundUser.money + 100
+   foundUser.save((err, data)=>{
+    res.redirect('/logs');
+  });
+  })
+})
+users.put('/show/1000', (req, res) => {
   User.findById(req.session.currentUser._id, (err, foundUser) => {
    foundUser.money = foundUser.money + 1000
+   foundUser.save((err, data)=>{
+    res.redirect('/logs');
+  });
+  })
+})
+users.put('/show/10000', (req, res) => {
+  User.findById(req.session.currentUser._id, (err, foundUser) => {
+   foundUser.money = foundUser.money + 10000
    foundUser.save((err, data)=>{
     res.redirect('/logs');
   });

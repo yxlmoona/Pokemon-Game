@@ -1,39 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>upgrade pokemon</title>
-  </head>
+  <%- include('../partials/head.ejs')%>
   <body>
-    <%- include('../partials/nav.ejs') %>
-    <img src="<%=log.img%>" alt="">
-    <h3>You will need <%=upgradeCoin=Math.floor(Math.random()* 500)%> coins to upgrade this pokemon</h3>
+    <header class="head-bar">
+        <h1><%=log.name%></h1>
+        <%- include('../partials/nav.ejs') %>
+    </header>
+    <div class="upgrade-display">
+      <div class="upgrade-img">
+        <img src="<%=log.img%>" alt="">
+        <h3>Coin needed: <%=upgradeCoin=Math.floor(Math.random()* 500)%></h3>
+      </div>
+      <div class="upgrade-info">
+        <select name="userId">
+          <option value='<%=user._id%>'>
+            <%=user.username%>
+          </option>
+        </select><br/>
+        <form class="upgrade"action="/logs/<%=log.id%>/edit?_method=PUT" method="post">
+          <label for="name">name</label>
+          <input type="text" name="name" value = <%=log.name%>>
+          <label for="img">upload image</label>
+          <input type="text" name="img" value = <%=log.img%> id="img">
+          <label for="type">type</label>
+          <input id="type"type="text" name="type" value = <%=log.type[0]%> id="type">
+          <input type="text" name="type" value = <%=log.type[1]%> id="type">
+          <p>Stats</p>
+          <div class="stats">
+            <div class="col">
+              <label for="HP">HP</label>
+                <input  type="text" name="hp" value = <%=log.stats.hp+10%> id="HP" readonly>
+            </div>
+            <div class="col">
+              <label for="attack">attack</label>
+                <input type="text" name="attack" value= <%=log.stats.attack+10%> id="attack" readonly>
+            </div>
+            <div class="col">
+              <label for="defense">defense</label>
+                <input type="text" name="defense" value= <%=log.stats.defense+10%> id="defense" readonly>
+            </div>
 
 
-    <select name="userId">
-      <option value='<%=user._id%>'>
-        <%=user.username%>
-      </option>
-    </select><br/>
-    <form action="/logs/<%=log.id%>/edit?_method=PUT" method="post">
-      <label for="name">name</label>
+          </div>
+          <label for="money">Coin Left After upgrade</label>
+          <input type="number" name="money" value = <%=money - upgradeCoin%>  readonly>
+          <input type="submit" name="" value="upgrade pokemon">
+        </form>
+      </div>
 
-      <input type="text" name="name" value = '<%=log.name%>'  id="name">
-      <label for="img">name</label>
-      <input type="text" name="img" value = <%=log.img%> id="name">
-      <label for="type">type</label>
-      <input type="text" name="type" value = <%=log.type[0]%> id="type">
-      <input type="text" name="type" value = <%=log.type[1]%> id="type">
-      <label for="HP">HP</label>
-      <input type="text" name="hp" value = <%=log.stats.hp+10%> id="HP" readonly>
-      <label for="attack">attack</label>
-      <input type="text" name="attack" value= <%=log.stats.attack+10%> id="attack" readonly>
-      <label for="defense">defense</label>
-      <input type="text" name="defense" value= <%=log.stats.defense+10%> id="defense" readonly>
-      <label for="money">Coin Left After upgrade</label>
-      <input type="number" name="money" value = <%=money - upgradeCoin%> id="name" readonly>
-      <input type="submit" name="" value="upgrade pokemon">
-    </form>
+
+    </div>
+
+
+
 
   </body>
 </html>

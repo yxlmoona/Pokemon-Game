@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
+    <%- include('../partials/head.ejs')%>
   <body>
-    <%- include('../partials/nav.ejs') %>
-    <form class="" action="/users/show?_method=PUT" method="post">
-      <input type="submit" name="" value="Buy 1000 Coins">
-    </form>
+    <header class="head-bar">
+        <h1>Coin Shop</h1>
+        <%- include('../partials/nav.ejs') %>
+    </header>
+    <div class="coin-container">
+      <div class="coin-row">
+        <img src="https://storage.needpix.com/rsynced_images/coin-3468160_1280.png" alt="">
+        <form class="" action="/users/show/100?_method=PUT" method="post">
+          <input type="submit" name="" value="Buy 100 Coins">
+        </form>
+      </div>
+      <div class="coin-row">
+        <img src="https://cdn.pixabay.com/photo/2018/06/11/10/04/money-3468157_960_720.png" alt="">
+        <form class="" action="/users/show/1000?_method=PUT" method="post">
+          <input type="submit" name="" value="Buy 1,000 Coins">
+        </form>
+      </div>
+      <div class="coin-row">
+        <img src="https://cdn.pixabay.com/photo/2018/06/11/09/54/game-3468135_960_720.png" alt="">
+        <form class="" action="/users/show/10000?_method=PUT" method="post">
+          <input type="submit" name="" value="Buy 10,000 Coins">
+        </form>
+      </div>    
+    </div>
+
 
   </body>
 </html>

@@ -182,3 +182,66 @@ h4{
   padding: 20px 0px;
   width: 50%;
 }
+/* edit */
+.upgrade-display{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: center;
+
+}
+.upgrade-img img{
+  width: 300px;
+  height: 300px;
+  margin: 20px 0px;
+  border: 0.5em solid gold;
+  box-shadow: 5px 10px 18px #888888;
+
+}
+select{
+  display: none;
+}
+.upgrade input{
+  background-color: white;
+  width: 200px;
+  display: block;
+  height: 40px;
+  margin: 10px auto;
+  color:DarkRed;
+  font-size: 20px;
+  text-align:  center;
+  border: 0.2em solid Gold;
+
+}
+.upgrade input:hover, .upgrade input:focus{
+  border: 0.2em solid DarkRed;
+}
+.upgrade input[type='submit']{
+  margin: 30px auto;
+  background-color: gold;
+  border: 0.2em solid DarkRed;
+}
+.upgrade label{
+  display: block;
+}
+#type{
+  display:inline;
+  margin: 10px;
+}
+.stats{
+  display: flex;
+  justify-content: center;
+}
+.col{
+  margin: 10px;
+}
+/* coin page */
+.coin-container{
+  display: flex;
+  justify-content: space-around;
+}
+.coin-row img{
+  width: 150px;
+  height: 100%;
+  margin: 30px auto;
+}
