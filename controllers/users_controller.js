@@ -3,8 +3,16 @@ const express = require('express')
 const User = require('../models/users.js')
 const Log = require('../models/logs.js')
 const users = express. Router()
+const isAuthenticated = (req, res, next) => {
+  if (req.session.currentUser) {
+    return next()
+  } else {
+    res.redirect('/sessions/new')
+  }
+}
+
 //*********presentational route***********//
-//user index page
+
 
 //user new route: sign up new users
 users.get('/new', (req, res) => {
@@ -36,28 +44,35 @@ users.post('/', (req, res) => {
     res.redirect('/')
   })
 })
+//update: fight
 
-users.put('/', (req, res) => {
+users.put('/',(req, res) => {
   User.findById(req.session.currentUser._id, (err, foundUser) => {
     let num = Math.random()
     let fightCoin = Math.floor(Math.random()*100)
     console.log(num);
     console.log(fightCoin);
     if(num > 0.5){
+
       foundUser.money = foundUser.money + fightCoin
       foundUser.save((err, data)=>{
           res.redirect('/logs');
       });
     }else{
-      foundUser.money = foundUser.money - fightCoin
-      foundUser.save((err, data)=>{
-          res.redirect('/logs');
-      });
-
+    
+      if(foundUser.money < fightCoin){
+        res.redirect('/users/show')
+      }else{
+        foundUser.money = foundUser.money - fightCoin
+        foundUser.save((err, data)=>{
+            res.redirect('/logs');
+        });
+      }
     }
 
   })
 })
+// update money
 users.put('/show/100', (req, res) => {
   User.findById(req.session.currentUser._id, (err, foundUser) => {
    foundUser.money = foundUser.money + 100

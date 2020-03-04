@@ -14,10 +14,11 @@ const isAuthenticated = (req, res, next) => {
 //log index page
 logs.get('/', isAuthenticated, (req, res) => {
   User.findById(req.session.currentUser._id, (err, foundUser) => {
+    
     res.render('logs/index.ejs',{
       money: foundUser.money,
       logs: foundUser.logs,
-      user: req.session.currentUser
+      user: req.session.currentUser,
 
     })
     // console.log("Money" + foundUser.money);
