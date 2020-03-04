@@ -75,17 +75,22 @@ logs.post('/', isAuthenticated,(req, res) => {
     defense: req.body.defense
   }
   User.findById(object.userId, (err,foundUser) => {
-    // console.log(req.session.currentUser);
-    Log.create(object, (err, createdLog) => {
-      foundUser.money = object.money
-      foundUser.logs.push(createdLog)
-      foundUser.save((err, data) => {
-        console.log(foundUser.logs);
-        res.redirect('/logs')
+      Log.create(object, (err, createdLog) => {
+        if(object.money < 0 ){
+          res.redirect('/users/show')
+        }else{
+
+        foundUser.money = object.money
+
+        foundUser.logs.push(createdLog)
+        foundUser.save((err, data) => {
+          // console.log(foundUser.logs);
+          res.redirect('/logs')
+        })
+      }
+        })
       })
 
-    })
-  })
 })
 //delete
 logs.delete('/:id', isAuthenticated,(req, res) => {
@@ -110,15 +115,20 @@ logs.put('/:id/edit', isAuthenticated,(req, res) => {
   }
   Log.findByIdAndUpdate(req.params.id, object, { new: true }, (err, updatedLog)=>{
         User.findById(req.session.currentUser._id, (err, foundUser)=>{
-          foundUser.money = foundUser.money - object.money
-            // console.log(updatedLog);
-            // console.log(foundUser);
-          foundUser.logs.id(req.params.id).remove();
-          foundUser.logs.push(updatedLog)
-            // console.log(foundUser.logs);
-          foundUser.save((err, data)=>{
-              res.redirect('/logs');
-          });
+          if (object.money<0) {
+            res.redirect('/users/show')
+          }else{
+            foundUser.money = foundUser.money - object.money
+              // console.log(updatedLog);
+              // console.log(foundUser);
+            foundUser.logs.id(req.params.id).remove();
+            foundUser.logs.push(updatedLog)
+              // console.log(foundUser.logs);
+            foundUser.save((err, data)=>{
+                res.redirect('/logs');
+            });
+          }
+
         });
     });
 })

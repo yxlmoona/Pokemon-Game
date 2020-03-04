@@ -14,8 +14,10 @@
       <div class="display-img">
         <img src="<%=pokemonShow.img%>"></img>
         <h2>Coins Needed:
-          <%let coin = Math.floor(Math.random()* 1000) %>
-          <%= coin %>
+          <%= coin = Math.floor(Math.random()* 1000) %>
+          <% user.money = user.money - coin %>
+
+
         </h2>
       </div>
       <div class="display-info">
