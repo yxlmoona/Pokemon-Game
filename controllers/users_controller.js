@@ -59,7 +59,7 @@ users.put('/',(req, res) => {
           res.redirect('/logs');
       });
     }else{
-    
+
       if(foundUser.money < fightCoin){
         res.redirect('/users/show')
       }else{

@@ -15,7 +15,8 @@
         <img src="<%=pokemonShow.img%>"></img>
         <h2>Coins Needed:
           <%= coin = Math.floor(Math.random()* 1000) %>
-          <% user.money = user.money - coin %>
+          <% money = money - coin
+          user.money = money %>
 
 
         </h2>

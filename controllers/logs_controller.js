@@ -14,7 +14,7 @@ const isAuthenticated = (req, res, next) => {
 //log index page
 logs.get('/', isAuthenticated, (req, res) => {
   User.findById(req.session.currentUser._id, (err, foundUser) => {
-    
+
     res.render('logs/index.ejs',{
       money: foundUser.money,
       logs: foundUser.logs,
@@ -119,7 +119,7 @@ logs.put('/:id/edit', isAuthenticated,(req, res) => {
           if (object.money<0) {
             res.redirect('/users/show')
           }else{
-            foundUser.money = foundUser.money - object.money
+            foundUser.money = object.money
               // console.log(updatedLog);
               // console.log(foundUser);
             foundUser.logs.id(req.params.id).remove();
