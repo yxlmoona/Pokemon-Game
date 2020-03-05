@@ -10,12 +10,13 @@
 
       </div>
     </header>
+    
     <div class="flex-container">
 
       <%for(let i = 0; i < logs.length; i++){%>
       <div class="row">
         <p><%=logs[i].name%></p>
-        <p>Coins: <%=money%></p>
+
         <a href="/logs/<%=logs[i]._id%>"><img class="log-img" src="<%=logs[i].img%>" alt=""></a>
         <form class="" action="/logs/<%=logs[i]._id%>?_method=DELETE" method="post">
           <input type="submit" name="" value="Delete">

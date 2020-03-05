@@ -121,7 +121,9 @@ input, button{
   flex-direction: column;
   justify-content: space-around;
 }
-
+.index-img:hover{
+  width: 55%;
+}
 .index-img, .log-img{
   margin: 10px auto;
   width: 40%;
@@ -181,6 +183,9 @@ h4{
 .log-img{
   padding: 20px 0px;
   width: 50%;
+}
+.log-img:hover{
+  width: 60%;
 }
 /* edit */
 .upgrade-display{
